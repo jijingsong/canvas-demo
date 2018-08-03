@@ -1,0 +1,23 @@
+#canvas {
+    background: #ccc;
+    display: block;
+}
+
+body {
+    margin: 0px;
+}
+
+.actions {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.actions > #draw{
+    display: none;
+}
+.actions.show > #eraser {
+    display: none;
+}
+.actions.show > #draw {
+    display: inline-block;
+}
