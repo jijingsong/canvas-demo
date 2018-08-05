@@ -35,7 +35,7 @@ ul {
     cursor: pointer;
 }
 .actions svg.active {
-    color: red;
+    fill: red;
     transform: scale(1.4);
     transition: all 0.3s;
 }
