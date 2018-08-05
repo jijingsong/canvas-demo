@@ -98,6 +98,27 @@ for (var i = 0; i < colorLi.length; i++) {
     }
 }
 
+var lineWidth = 3;
+thin.onclick = function () {
+    lineWidth = 3
+    thick.classList.remove('active')
+    thin.classList.add('active')
+}
+thick.onclick = function () {
+    lineWidth = 6
+    thin.classList.remove('active')
+    thick.classList.add('active')
+}
+
+clear.onclick = function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+save.onclick = function () {
+    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    window.location.href=image;
+}
+
 function fullWidth() {
     canvas.width = document.documentElement.clientWidth
     canvas.height = document.documentElement.clientHeight
@@ -106,7 +127,7 @@ function fullWidth() {
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath()
     ctx.moveTo(x1, y1)
-    ctx.lineWidth = 5
+    ctx.lineWidth = lineWidth
     ctx.lineTo(x2, y2)
     ctx.stroke()
 }
