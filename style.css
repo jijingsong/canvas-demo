@@ -1,18 +1,41 @@
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
 #canvas {
-    background: #ccc;
+    background: #eee;
     display: block;
 }
 
 body {
     margin: 0px;
 }
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 .actions {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    left: 30px;
+    top: 30px;
 }
-.actions > #draw{
+.actions svg {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.actions svg.active {
+    color: red;
+    transform: scale(1.4);
+    transition: all 0.3s;
+}
+/* .actions > #draw{
     display: none;
 }
 .actions.show > #eraser {
@@ -20,4 +43,34 @@ body {
 }
 .actions.show > #draw {
     display: inline-block;
+} */
+
+.color {
+    position: fixed;
+    left: 30px;
+    top: 80px;
+}
+.color li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.color li.active {
+    transform: scale(1.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.23)
+}
+.color .black {
+    background-color: #000;
+}
+.color .red {
+    background-color: red;
+}
+.color .green {
+    background-color: green;
+}
+.color .blue {
+    background-color: blue;
 }

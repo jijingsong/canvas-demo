@@ -1,5 +1,5 @@
 var canvas = document.getElementById('canvas');
-var c = canvas.getContext('2d');
+var ctx = canvas.getContext('2d');
 
 fullWidth()
 window.onresize = function () {
@@ -18,7 +18,7 @@ function listenToUser(canvas) {
             using = true
 
             if (eraserEnabled) {
-                c.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 10, 10)
             } else {
                 beforePoint = { x: x, y: y }
             }
@@ -30,7 +30,7 @@ function listenToUser(canvas) {
             if (!using) { return }
 
             if (eraserEnabled) {
-                c.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 10, 10)
             } else {
                 var afterPoint = { x: x, y: y }
                 drawLine(beforePoint.x, beforePoint.y, afterPoint.x, afterPoint.y)
@@ -48,7 +48,7 @@ function listenToUser(canvas) {
             using = true
 
             if (eraserEnabled) {
-                c.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 10, 10)
             } else {
                 beforePoint = { x: x, y: y }
             }
@@ -60,7 +60,7 @@ function listenToUser(canvas) {
             if (!using) { return }
 
             if (eraserEnabled) {
-                c.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 10, 10)
             } else {
                 var afterPoint = { x: x, y: y }
                 drawLine(beforePoint.x, beforePoint.y, afterPoint.x, afterPoint.y)
@@ -77,13 +77,26 @@ function listenToUser(canvas) {
 var eraserEnabled = false
 eraser.onclick = function () {
     eraserEnabled = true
-    actions.className = 'actions show'
+    draw.classList.remove('active')
+    eraser.classList.add('active')
 }
 draw.onclick = function () {
     eraserEnabled = false
-    actions.className = 'actions'
+    eraser.classList.remove('active')
+    draw.classList.add('active')
 }
 
+var color = document.getElementsByClassName('color')[0]
+var colorLi = color.children
+for (var i = 0; i < colorLi.length; i++) {
+    colorLi[i].onclick = function () {
+        for (var j = 0; j < colorLi.length; j++) {
+            colorLi[j].classList.remove('active')
+        }
+        this.classList.add('active')
+        ctx.strokeStyle = this.id
+    }
+}
 
 function fullWidth() {
     canvas.width = document.documentElement.clientWidth
@@ -91,14 +104,14 @@ function fullWidth() {
 }
 
 function drawLine(x1, y1, x2, y2) {
-    c.beginPath()
-    c.moveTo(x1, y1)
-    c.lineWidth = 5
-    c.lineTo(x2, y2)
-    c.stroke()
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineWidth = 5
+    ctx.lineTo(x2, y2)
+    ctx.stroke()
 }
 function drawCircle(x, y, radius) {
-    c.beginPath()
-    c.arc(x, y, radius, 0, Math.PI * 2)
-    c.stroke()
+    ctx.beginPath()
+    ctx.arc(x, y, radius, 0, Math.PI * 2)
+    ctx.stroke()
 }
