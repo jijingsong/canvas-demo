@@ -18,7 +18,7 @@ function listenToUser(canvas) {
             using = true
 
             if (eraserEnabled) {
-                ctx.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 20, 20)
             } else {
                 beforePoint = { x: x, y: y }
             }
@@ -30,7 +30,7 @@ function listenToUser(canvas) {
             if (!using) { return }
 
             if (eraserEnabled) {
-                ctx.clearRect(x, y, 10, 10)
+                ctx.clearRect(x, y, 20, 20)
             } else {
                 var afterPoint = { x: x, y: y }
                 drawLine(beforePoint.x, beforePoint.y, afterPoint.x, afterPoint.y)
